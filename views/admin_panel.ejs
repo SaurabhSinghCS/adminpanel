@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <style>
+            body {
+                font-family: 'Poppins', sans-serif;
+                background: #fafafa;
+
+            }
+
+
+            p {
+                font-family: 'Poppins', sans-serif;
+                font-size: 1.1em;
+                font-weight: 300;
+                line-height: 1.7em;
+                color: #999;
+            }
+
+            a,
+            a:hover,
+            a:focus {
+                color: inherit;
+                text-decoration: none;
+                transition: all 0.3s;
+            }
+
+            #sidebar .sidebar-header {
+                padding: 20px;
+                background: #6d7fcc;
+            }
+
+            #sidebar ul.components {
+                padding: 0px 0;
+                border-bottom: 1px solid #47748b;
+            }
+
+            #sidebar ul p {
+                color: #fff;
+                padding: 10px;
+            }
+
+            #sidebar ul li a {
+                padding: 10px;
+                font-size: 1.1em;
+                display: block;
+            }
+
+            #sidebar ul li a:hover:not(.head) {
+                color: #7386D5;
+                background: #fff;
+            }
+
+            #sidebar ul li.active>a,
+            a[aria-expanded="true"] {
+                color: #fff;
+                background: #6d7fcc;
+            }
+
+            ul ul a {
+                font-size: 0.9em !important;
+                padding-left: 30px !important;
+                background: #6d7fcc;
+            }
+
+            .wrapper {
+                display: flex;
+                width: 100%;
+            }
+
+            #sidebar {
+                width: 250px;
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100vh;
+                z-index: 999;
+                background: #7386D5;
+                color: #fff;
+                transition: all 0.3s;
+            }
+
+            li {
+                list-style-type: none;
+            }
+
+            #customers {
+                font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                border-collapse: collapse;
+                width: 90%;
+                border-left-width: 10px;
+            }
+
+            #customers td,
+            #customers th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            #customers tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            #customers th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #4CAF50;
+                color: white;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <!-- Sidebar -->
+            <nav id="sidebar">
+                <div class="sidebar-header">
+                    <div class="py-4 px-3 mb-4">
+                        <div class="media d-flex align-items-center"><img
+                                src="https://img.icons8.com/plasticine/x/user.png" alt="..." width="80"
+                                class="mr-3 rounded-circle img-thumbnail shadow-sm">
+                            <div class="media-body">
+                                <h6 style="font-size: 120%; font-weight: bold" class="m-0">Saurabh Singh</h6>
+                                <p style="color: black; font-weight: 600;">Admin</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="components">
+                    <li class="active">
+                        <a class="head">Home</a>
+                        <ul id="homeSubmenu">
+                            <li>
+                                <a href="#">Menu</a>
+                            </li>
+                            <li>
+                                <a href="#">Home 2</a>
+                            </li>
+                            <li>
+                                <a href="#">Home 3</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="head">Pages</a>
+                        <ul id="pageSubmenu">
+                            <li>
+                                <a href="#">Page 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Page 2</a>
+                            </li>
+                            <li>
+                                <a href="#">Page 3</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Contact Info</a>
+                    </li>
+                    <li>
+                        <a href="/" class="head" style="align-items: center">
+                            <button class="btn btn-danger">Logout</button>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <h2>User Description</h2>
+        </div>
+        <div style="padding-left: 270px;">
+            <h2>User Description</h2>
+            <br>
+            <table id="customers">
+                <tr>
+                    <th>Username</th>
+                    <th>Name</th>
+                    <th>Email Address</th>
+                    <th></th>
+                </tr>
+                <% for(var i=0;i < data.length; i++){ %>
+                <tr>
+                    <td><%= data[i].username %></td>
+                    <td><%= data[i].name %></td>
+                    <td><%= data[i].email %></td>
+                    <td>
+                        <form action="/admin_panel/<%= data[i].username %>?_method=DELETE" method="POST">
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                <% } %>
+            </table>
+
+        </div>
+    </body>
+
+</html>
